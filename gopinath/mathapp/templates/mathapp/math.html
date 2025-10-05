@@ -1,39 +1,5 @@
-# Ex.05 Design a Website for Server Side Processing
-## Date:
-
-## AIM:
- To design a website to calculate the power of a lamp filament in an incandescent bulb in the server side. 
 
 
-## FORMULA:
-BMI = W/(H/100)**2
-<br> BMI --> Body Mass Index
-<br> W --> Weight
-<br> H --> Height
-
-## DESIGN STEPS:
-
-### Step 1:
-Clone the repository from GitHub.
-
-### Step 2:
-Create Django Admin project.
-
-### Step 3:
-Create a New App under the Django Admin project.
-
-### Step 4:
-Create python programs for views and urls to perform server side processing.
-
-### Step 5:
-Create a HTML file to implement form based input and output.
-
-### Step 6:
-Publish the website in the given URL.
-
-## PROGRAM :
-```
-math.html
 <html>
 
 <head>
@@ -124,42 +90,4 @@ math.html
 </body>
 
 </html>
-view.py
-from django.shortcuts import render
-from django.shortcuts import render
 
-def bmi_calculator(request):
-    bmi = None
-    category = None
-    if request.method == 'POST':
-        try:
-            height = float(request.POST.get('height')) / 100
-            weight = float(request.POST.get('weight'))
-            bmi = round(weight / (height ** 2), 2)
-            print(f" Height: {height * 100} cm \n Weight: {weight} kg \n BMI: {bmi}")
-        except (ValueError, ZeroDivisionError):
-            print("Invalid input received.")
-            bmi = "Invalid input"
-            category = None
-    return render(request, 'mathapp/math.html', {'bmi': bmi, 'category': category})
-
-url.py
-from django.contrib import admin
-from django.urls import path
-from mathapp.views import bmi_calculator
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', bmi_calculator, name='bmi_calculator'),
-]
-
-```
-
-## SERVER SIDE PROCESSING:
-![alt text](<gopinath/mathapp/Screenshot 2025-10-05 164922.png>)
-
-## HOMEPAGE:
-![alt text](gopinath/mathapp/math.png)
-
-## RESULT:
-The program for performing server side processing is completed successfully.
